@@ -157,8 +157,7 @@ public class TestSocketIO : MonoBehaviour
 				{
 					socketIo.Emit(eventName.text,new JSONObject(eventData.text));
 				}
-				eventName.text="";
-				eventData.text="";
+
 
 
 			}
@@ -192,8 +191,7 @@ public class TestSocketIO : MonoBehaviour
 				}
 				currentPoject.AddEvent (new EventInfo(eventName.text,eventData.text,isReturn.isOn));
 				UpdateOptionList ();
-				eventName.text="";
-				eventData.text="";
+
 			}
 		}
 		else
@@ -268,6 +266,9 @@ public class Project
 		}
 		else
 		{
+			eventList = new List<EventInfo> ();
+			eventList.Add (new EventInfo ());
+
 			SavePorject ();
 		}
 	}
@@ -280,8 +281,7 @@ public class Project
 	{
 		if(path!=null &&!path.Equals(""))
 			File.WriteAllText (path, JsonUtility.ToJson (this));
-		eventList = new List<EventInfo> ();
-		eventList.Add (new EventInfo ());
+		
 	}
 	public void AddEvent(EventInfo temp)
 	{
